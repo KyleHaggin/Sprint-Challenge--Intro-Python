@@ -17,8 +17,8 @@
 class City:
     def __init__(self, name, lat, lon):
         self.name = name
-        self.lat = lat
-        self.lon = lon
+        self.lat = float(lat)
+        self.lon = float(lon)
 
     def __str__(self):
         return (f'(City Name: {self.name}, Lattitude: {self.lat}, Longitude: {self.lon})')
@@ -37,7 +37,7 @@ def cityreader(cities=[]):
         next(data_file)
         # create the list of city objects
         for row in data_file:
-            cities.append(City(row[0], row[3], row[4]))
+            cities.extend([City(row[0], row[3], row[4])])
 
     return cities
 
